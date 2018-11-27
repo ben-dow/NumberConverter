@@ -48,15 +48,6 @@ string BinaryToDecimalConverter(int num){
     return to_string(decimalResult);
 }
 
-int eachDigit(int num){
-    if(num >= 10){
-       eachDigit(num / 10);
-    }
-
-    int digit = num % 10;
-
-    std::cout << digit << '\n';
-}
 
 string ConvertVector(vector<int> vec){
     std::ostringstream vts;
