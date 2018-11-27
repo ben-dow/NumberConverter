@@ -64,7 +64,6 @@ string ConvertVector(vector<int> vec){
     if (!vec.empty()){
         copy(vec.begin(), vec.end(), ostream_iterator<int>(vts,""));
     }
-
     return vts.str();
 }
 
