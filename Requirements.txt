@@ -1,0 +1,5 @@
+Application in C++ that can:
+
+- Prompt user whether they want to go from Decimal to Binary or Binary to Decimal
+- Convert the number into the desired format
+- Output the result into the console
