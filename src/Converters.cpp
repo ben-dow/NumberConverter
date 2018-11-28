@@ -118,9 +118,12 @@ string BinaryNumber::toDecimal(){
 
 string BinaryNumber::toHex(){
 
+    //First Convert to Decimal
+    string DecimalConversion = this->toDecimal();
 
-
-    return "Conversion Not Yet Implemented";
+    //Use Existing Methods to Convert
+    DecimalNumber decimalNumber = DecimalNumber(DecimalConversion);
+    return decimalNumber.toHex();
 }
 
 /* HEX IMPLEMENTATIONS */
