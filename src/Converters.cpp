@@ -132,7 +132,18 @@ string HexNumber::toBinary(){
 }
 
 string HexNumber::toDecimal(){
-    return "Conversion Not Yet Implemented";
+    int DecimalResult = 0;
+
+    int power = 0;
+    for(int i = num.length() - 1; i >= 0; --i){
+        if(isdigit(num[i])){
+            int h = (int)num[i] - 48;
+            DecimalResult += h * pow(16,power);
+        }
+        power++;
+    }
+
+    return to_string(DecimalResult);
 
 }
 
