@@ -6,15 +6,6 @@
 using namespace std;
 
 int main(){
-
-
-    // Makes code more readable for deciding which Conversion to execute
-    enum NumberType{
-        Binary = 1,
-        Decimal = 2,
-        Hex = 3
-    };
-
     // Prompt the User for input data about which conversion is desired
     cout << "What Kind of Number is it?" << endl;
     cout << "(1) Binary" << endl;
