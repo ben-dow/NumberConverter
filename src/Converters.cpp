@@ -33,11 +33,65 @@ string DecimalNumber::toBinary(){
 }
 
 string DecimalNumber::toDecimal(){
+
+    //Already in Decimal Format, Return as Is
     return num;
 }
 
 string DecimalNumber::toHex(){
-    return "Conversion Not Yet Implemented";
+    
+    string HexResult = "";
+
+    int intNum = stoi(num);
+
+    int remainder;
+    do {
+        remainder = intNum % 16;
+
+        if (remainder <= 9)
+        {
+            HexResult.append(to_string(remainder));
+        }
+        else{
+            switch(remainder){
+                case(10):{
+                    HexResult.append("A");
+                    break;
+                }
+                case(11):{
+                    HexResult.append("B");
+                    break;
+                }
+                case(12):{
+                    HexResult.append("C");
+                    break;
+                }
+                case(13):{
+                    HexResult.append("D");
+                    break;
+                }
+                case(14):{
+                    HexResult.append("E");
+                    break;
+                }
+                case(15):{
+                    HexResult.append("F");
+                    break;
+                }
+            }
+
+        }
+
+        intNum = intNum / 16;
+
+        
+    }while(intNum >= 1);
+
+    //Converted Number is reversed for display value
+    reverse(HexResult.begin(), HexResult.end()); 
+
+    
+    return HexResult;
 }
 
 /* BINARY IMPLEMENTATIONS */
@@ -63,6 +117,9 @@ string BinaryNumber::toDecimal(){
 }
 
 string BinaryNumber::toHex(){
+
+
+
     return "Conversion Not Yet Implemented";
 }
 
