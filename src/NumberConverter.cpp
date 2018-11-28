@@ -29,9 +29,7 @@ int main(){
     std::string ConversionNumber;
     cin >> ConversionNumber;
 
-    NumberFactory * factory = new NumberFactory();
-
-    Number *number =  factory->create(Type,ConversionNumber);
+    Number *number =  NumberFactory::create(Type,ConversionNumber);
     
 
     cout << "What do you want to convert to?" << endl;
@@ -50,6 +48,7 @@ int main(){
     switch(ConvertType){
         case Binary: {
             cout << number->toBinary() << endl;
+
             break;
         }
         case Decimal: {
@@ -65,7 +64,5 @@ int main(){
         }
     } 
 
-
-
-
+    delete number;
 }

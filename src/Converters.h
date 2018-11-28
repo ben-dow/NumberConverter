@@ -13,6 +13,8 @@ class Number {
         virtual std::string toBinary() = 0;
         virtual std::string toDecimal() = 0;
         virtual std::string toHex() = 0; 
+        virtual ~Number() {}
+        
     protected:
         std::string num;
 };
@@ -21,7 +23,9 @@ class BinaryNumber: public Number {
     public:
          std::string toBinary();
          std::string toDecimal();
-         std::string toHex(); 
+         std::string toHex();
+
+         ~BinaryNumber(){} 
 
         BinaryNumber(std::string usernum){
             num = usernum;
@@ -36,6 +40,8 @@ class DecimalNumber: public Number {
          std::string toDecimal();
          std::string toHex(); 
 
+         ~DecimalNumber(){}
+
 
         DecimalNumber(std::string usernum){
             num = usernum;
@@ -49,6 +55,7 @@ class HexNumber: public Number {
          std::string toBinary();
          std::string toDecimal();
          std::string toHex(); 
+         ~HexNumber(){}
 
         HexNumber (std::string usernum){
             num = usernum;
@@ -58,7 +65,7 @@ class HexNumber: public Number {
 
 class NumberFactory {
     public:
-    Number* create(int type, std::string numstring);
+    static Number* create(int type, std::string numstring);
 };
 
 //Helper Method
