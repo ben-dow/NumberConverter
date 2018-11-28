@@ -128,7 +128,10 @@ string BinaryNumber::toHex(){
 
 /* HEX IMPLEMENTATIONS */
 string HexNumber::toBinary(){
-    return "Conversion Not Yet Implemented";
+    string DecimalConversion = this->toDecimal();
+
+    DecimalNumber decimalNumber = DecimalNumber(DecimalConversion);
+    return decimalNumber.toBinary();
 }
 
 string HexNumber::toDecimal(){
