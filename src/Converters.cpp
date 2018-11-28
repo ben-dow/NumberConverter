@@ -9,44 +9,105 @@
 
 using namespace std;
 
-string DecimalToBinaryConverter(int num){
+/* DECIMAL IMPLEMENTATIONS */
+string DecimalNumber::toBinary(){
     
     vector<int> binaryStorage;
+
+    int intNum = stoi(num);
 
     int remainder;
 
     do {
-        remainder = num % 2;
+        remainder = intNum % 2;
         
         binaryStorage.push_back(remainder);
 
-        num = num / 2;
+        intNum = intNum / 2;
 
-    } while(num >= 1);
+    } while(intNum >= 1);
 
     reverse(binaryStorage.begin(), binaryStorage.end());
 
     return ConvertVector(binaryStorage);
 }
 
-string BinaryToDecimalConverter(int num){
-    
-    string strnum = to_string(num);
+string DecimalNumber::toDecimal(){
+    return num;
+}
+
+string DecimalNumber::toHex(){
+    return "Conversion Not Yet Implemented";
+}
+
+/* BINARY IMPLEMENTATIONS */
+string BinaryNumber::toBinary(){
+    return num;
+}
+
+
+string BinaryNumber::toDecimal(){
 
     int power = 0;
     int decimalResult = 0;
-    for(int i = strnum.length() -1; i >= 0; --i){
+    for(int i = num.length() -1; i >= 0; --i){
         std::string::size_type sz;
 
-        int h = (int)strnum[i] - 48;
+        int h = (int)num[i] - 48;
         decimalResult += h * pow(2, power);
 
         power++;     
     }
-    
 
     return to_string(decimalResult);
 }
+
+string BinaryNumber::toHex(){
+    return "Conversion Not Yet Implemented";
+}
+
+/* HEX IMPLEMENTATIONS */
+string HexNumber::toBinary(){
+    return "Conversion Not Yet Implemented";
+}
+
+string HexNumber::toDecimal(){
+    return "Conversion Not Yet Implemented";
+
+}
+
+string HexNumber::toHex(){
+    return num;
+}
+
+Number* NumberFactory::create(int type, std::string numstring){
+
+    switch(type){
+
+        case Binary: {
+            cout << "Creating Binary Number" << endl;
+            return new BinaryNumber(numstring);
+            break;
+        }
+
+        case Decimal: {
+            return new DecimalNumber(numstring);
+            break;
+        }
+        case Hex: {
+            return new HexNumber(numstring);
+            break;
+
+        }
+        default: {
+            cout << "Invalid Number Type" << endl;
+            exit('E');
+            break;
+        }
+
+    }
+}
+
 
 
 string ConvertVector(vector<int> vec){
@@ -57,14 +118,3 @@ string ConvertVector(vector<int> vec){
     }
     return vts.str();
 }
-
-void VectorPrinter(vector<int> conversion){
-
-    for(int i = 0; i < conversion.size(); ++i){
-        cout << conversion[i];
-    }
-
-    cout << endl;
-
-}
-

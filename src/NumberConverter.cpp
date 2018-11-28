@@ -6,50 +6,66 @@
 using namespace std;
 
 int main(){
-    std::cout << __cplusplus;
 
 
     // Makes code more readable for deciding which Conversion to execute
-    enum ConversionTypes{
-        DecimalToBinary = 1,
-        BinaryToDecimal = 2
+    enum NumberType{
+        Binary = 1,
+        Decimal = 2,
+        Hex = 3
     };
 
     // Prompt the User for input data about which conversion is desired
-    cout << "Select the conversion you would like complete" << endl;
-    cout << "(1) Decimal to Binary" << endl;
-    cout << "(2) Binary to Decimal" << endl;
-    int ConversionType;
-    cin >> ConversionType;
+    cout << "What Kind of Number is it?" << endl;
+    cout << "(1) Binary" << endl;
+    cout << "(2) Decimal" << endl;
+    cout << "(3) Hex" << endl;
+
+    int Type;
+    cin >> Type;
 
     // Prompt the user for the Number to be used
     cout << "\nWhich number would you like to convert?" << endl;
-    int ConversionNumber;
+    std::string ConversionNumber;
     cin >> ConversionNumber;
 
+    NumberFactory * factory = new NumberFactory();
 
-    switch(ConversionType){
+    Number *number =  factory->create(Type,ConversionNumber);
+    
 
-        case DecimalToBinary: {
-            cout << "\nConverting Decimal Number to Binary" << endl;
-            string  binaryStorage = DecimalToBinaryConverter(ConversionNumber);
-            cout << binaryStorage << endl;
+    cout << "What do you want to convert to?" << endl;
+    cout << "(1) Binary" << endl;
+    cout << "(2) Decimal" << endl;
+    cout << "(3) Hex" << endl;
+
+    int ConvertType;
+    cin >> ConvertType;
+
+    cout << "" << endl;
+
+
+    string conversion;
+    cout << "The converted number is: ";
+    switch(ConvertType){
+        case Binary: {
+            cout << number->toBinary() << endl;
             break;
         }
-
-        case BinaryToDecimal: {
-            cout << "Convering Binary Number to Decimal" << endl;
-            string DecimalStorage = BinaryToDecimalConverter(ConversionNumber);
-            cout << DecimalStorage << endl;
+        case Decimal: {
+            cout << number->toDecimal() << endl;
             break;
         }
-        
+        case Hex: {
+            cout << number->toHex() << endl;
+            break;
+        }
         default: {
-            cout << "Invalid Conversion Type" << endl;
             break;
         }
-    
-    
     } 
+
+
+
 
 }
